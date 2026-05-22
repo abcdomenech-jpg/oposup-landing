@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OposUp — Tests 100% reals per aprovar les teves oposicions a Catalunya</title>
+  <meta name="description" content="+3.000 preguntes d'exàmens oficials de la Generalitat, Ajuntaments i Diputacions. Prepara les teves oposicions a l'administració pública catalana amb explicació detallada de cada resposta." />
+  <meta name="keywords" content="oposicions Catalunya, oposicions Generalitat, tests oposicions, exàmens oficials Catalunya, preparar oposicions, administració pública catalana, oposicions 2026" />
+  <meta property="og:title" content="OposUp — Tests 100% reals per aprovar les teves oposicions" />
+  <meta property="og:description" content="+3.000 preguntes d'exàmens oficials amb explicació detallada. Generalitat, Ajuntaments i Diputacions." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #1D9E75;
+      --primary-light: #e8f7f1;
+      --primary-border: #a0d4c0;
+      --foreground: #1a2332;
+      --muted-foreground: #6b7280;
+      --border: #e5e9f0;
+      --card: #ffffff;
+      --background: #ffffff;
+      --amber: #b45309;
+      --amber-light: #fef3c7;
+      --destructive: #E24B4A;
+      --radius: 0.75rem;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background: var(--background);
+      color: var(--foreground);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .container { width: 100%; margin: 0 auto; padding: 0 1rem; }
+    .max-5xl { max-width: 64rem; }
+    .max-4xl { max-width: 56rem; }
+    .max-3xl { max-width: 48rem; }
+
+    /* ── TOP BANNER ── */
+    .top-banner {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 10px 1rem;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* ── BETA BANNER ── */
+    .beta-banner {
+      background: linear-gradient(90deg, #d97706, #f59e0b, #d97706);
+      color: white;
+      padding: 14px 24px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 2px solid #b45309;
+    }
+    .beta-banner-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      text-align: center;
+    }
+    .beta-banner strong { font-size: 13px; display: flex; align-items: center; gap: 8px; }
+    .beta-banner p { margin: 0; font-size: 13px; line-height: 1.6; }
+    .beta-close {
+      background: none; border: none; cursor: pointer;
+      color: white; padding: 6px; opacity: 0.8;
+      font-size: 20px; flex-shrink: 0; line-height: 1;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      height: 80px; max-width: 72rem;
+      margin: 0 auto; padding: 0 1.5rem;
+    }
+    .nav-logo { height: 52px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a {
+      font-size: 14px; font-weight: 800;
+      color: var(--primary); cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .nav-links a:hover { opacity: 0.75; }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-ghost {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 7px 16px;
+      border-radius: 8px;
+      font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: background 0.15s;
+    }
+    .btn-ghost:hover { background: rgba(29,158,117,0.08); }
+    .btn-primary {
+      background: var(--primary);
+      color: white; border: none;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: opacity 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .nav-mobile-toggle {
+      display: none; background: none; border: none;
+      cursor: pointer; padding: 8px;
+    }
+    .nav-mobile-menu {
+      display: none;
+      border-top: 1px solid var(--border);
+      background: white; padding: 16px;
+    }
+    .nav-mobile-menu.open { display: block; }
+    .nav-mobile-menu a {
+      display: block; padding: 8px 0;
+      font-size: 15px; font-weight: 800;
+      color: var(--primary);
+    }
+    .nav-mobile-actions {
+      display: flex; flex-direction: column;
+      gap: 8px; padding-top: 12px;
+      border-top: 1px solid var(--border); margin-top: 8px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 80px 1rem 24px;
+      background: #f0fdf4;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800; line-height: 1.2;
+      color: var(--foreground);
+      animation: fadeUp 0.5s ease both;
+    }
+    .hero p {
+      margin-top: 24px;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--muted-foreground);
+      font-weight: 600; line-height: 1.6;
+      animation: fadeUp 0.5s 0.15s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION LABELS ── */
+    .section-label {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--primary);
+    }
+
+    /* ── START NOW SECTION ── */
+    .start-now {
+      padding: 24px 1rem 32px;
+      background: #f6fef9;
+    }
+    .hero-card {
+      border-radius: 12px;
+      background: var(--card);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .hero-card-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 768px) { .hero-card-grid { grid-template-columns: 1fr; } }
+    .hero-card-left {
+      display: flex; flex-direction: column;
+      gap: 16px; padding: 24px; justify-content: center;
+    }
+    .badge-green {
+      display: inline-block;
+      background: var(--primary); color: white;
+      font-size: 12px; font-weight: 600;
+      padding: 4px 12px; border-radius: 999px;
+      width: fit-content;
+    }
+    .hero-card h3 { font-size: 26px; font-weight: 700; }
+    .hero-card p.desc { font-size: 14px; font-weight: 600; color: var(--muted-foreground); }
+    .btn-big-green {
+      background: var(--primary); color: white;
+      border: none; padding: 11px 20px;
+      border-radius: 8px; font-size: 14px;
+      font-weight: 600; cursor: pointer;
+      transition: opacity 0.15s; width: 100%;
+      max-width: 260px;
+    }
+    .btn-big-green:hover { opacity: 0.88; }
+    .hero-card-right {
+      display: flex; flex-direction: column;
+      gap: 12px; padding: 24px;
+    }
+    .hero-card-block {
+      border-radius: 8px; padding: 16px; flex: 1;
+    }
+    .hero-card-block.green { background: var(--primary); }
+    .hero-card-block.green p { color: white; font-size: 14px; }
+    .hero-card-block.green strong { color: white; font-size: 14px; font-weight: 700; }
+    .hero-card-block.light { background: #E1F5EE; }
+    .hero-card-block.light strong { color: #085041; font-size: 14px; font-weight: 700; }
+    .hero-card-block.light p { color: #0F6E56; font-size: 14px; margin-top: 4px; }
+
+    .temari-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 12px; margin-top: 16px;
+    }
+    @media (max-width: 768px) { .temari-grid { grid-template-columns: 1fr; } }
+    .temari-card {
+      display: flex; flex-direction: column;
+      gap: 12px; padding: 20px; border-radius: 12px;
+      transition: box-shadow 0.2s;
+    }
+    .temari-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+    .temari-card-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .temari-card-title { font-size: 15px; font-weight: 700; }
+    .temari-card-desc { font-size: 13px; font-weight: 600; flex: 1; }
+    .btn-white {
+      background: white; color: var(--foreground);
+      border: 1px solid var(--border);
+      padding: 8px 16px; border-radius: 8px;
+      font-size: 13px; font-weight: 600;
+      cursor: pointer; width: 100%;
+      transition: background 0.15s;
+    }
+    .btn-white:hover { background: #f5f5f5; }
+
+    /* ── EXAM LIBRARY ── */
+    .exam-library {
+      padding: 64px 1rem;
+      background: #f0fdf4;
+    }
+    .exam-library h2 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800; text-align: center; margin-bottom: 12px;
+    }
+    .exam-library .subtitle {
+      text-align: center; color: var(--muted-foreground);
+      max-width: 40rem; margin: 0 auto 32px;
+    }
+    .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+    @media (max-width: 640px) { .metrics-grid { grid-template-columns: 1fr; } }
+    .metric-card {
+      border-radius: 16px; padding: 16px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .metric-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.6); flex-shrink: 0;
+    }
+    .metric-value { font-size: 22px; font-weight: 800; line-height: 1; }
+    .metric-label { font-size: 12px; color: var(--muted-foreground); margin-top: 4px; }
+
+    .exam-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 640px) { .exam-cards-grid { grid-template-columns: 1fr; } }
+    .exam-card {
+      border-radius: 16px; border: 1px solid var(--border);
+      background: var(--card); padding: 16px;
+      display: flex; flex-direction: column;
+    }
+    .exam-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+    .exam-card h3 { font-size: 14px; font-weight: 700; line-height: 1.3; }
+    .exam-card .source { font-size: 12px; color: rgba(0,0,0,0.4); margin-top: 2px; }
+    .exam-card .year { font-size: 22px; font-weight: 800; color: var(--primary); flex-shrink: 0; line-height: 1; }
+    .badge-green-light {
+      display: inline-block;
+      background: #dcfce7; color: #166534;
+      font-size: 11px; font-weight: 600;
+      padding: 2px 8px; border-radius: 999px; margin-bottom: 12px;
+    }
+    .exam-card-actions { display: flex; gap: 8px; margin-top: auto; padding-top: 8px; }
+    .btn-sm {
+      flex: 1; padding: 7px 12px;
+      border-radius: 8px; font-size: 12px;
+      font-weight: 600; cursor: pointer;
+      border: none; transition: opacity 0.15s;
+    }
+    .btn-sm.primary { background: var(--primary); color: white; }
+    .btn-sm.outline {
+      background: white; color: var(--foreground);
+      border: 1px solid var(--border);
+    }
+    .btn-sm:hover { opacity: 0.85; }
+    .exam-library-cta {
+      text-align: center; margin-top: 32px;
+    }
+    .btn-lg {
+      background: var(--primary); color: white;
+      border: none; padding: 14px 28px;
+      border-radius: 10px; font-size: 15px;
+      font-weight: 700; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: opacity 0.15s;
+    }
+    .btn-lg:hover { opacity: 0.88; }
+
+    /* ── EL TEU ESPAI (demo) ── */
+    .espai-section {
+      padding: 32px 1rem;
+      background: #f6fef9;
+    }
+    .espai-card {
+      border-radius: 12px; border: 1px solid var(--border);
+      background: var(--card); overflow: hidden;
+    }
+    .espai-topbar {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 12px;
+      padding: 12px 16px; border-bottom: 1px solid var(--border);
+    }
+    .avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--primary); color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700; flex-shrink: 0;
+    }
+    .espai-name { font-size: 14px; font-weight: 600; }
+    .espai-sub { font-size: 12px; color: var(--muted-foreground); }
+    .streak-badge {
+      background: #FAEEDA; color: #BA7517;
+      font-size: 12px; font-weight: 600;
+      padding: 4px 12px; border-radius: 999px;
+      flex-shrink: 0;
+    }
+    .espai-note {
+      font-size: 13px; font-weight: 700;
+      color: var(--muted-foreground);
+    }
+    .example-badge {
+      display: inline-block;
+      background: rgba(29,158,117,0.1); color: var(--primary);
+      font-size: 12px; font-weight: 600;
+      padding: 3px 12px; border-radius: 999px;
+    }
+    .metrics-row {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; padding: 16px;
+    }
+    @media (max-width: 640px) { .metrics-row { grid-template-columns: repeat(2, 1fr); } }
+    .mini-metric {
+      border-radius: 10px; padding: 12px;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .mini-metric-label { font-size: 11px; color: var(--muted-foreground); }
+    .mini-metric-value { font-size: 20px; font-weight: 700; line-height: 1; }
+    .espai-panels {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 12px; padding: 0 16px 16px;
+    }
+    @media (max-width: 640px) { .espai-panels { grid-template-columns: 1fr; } }
+    .espai-panel {
+      background: #FAEEDA; border-radius: 10px;
+      padding: 16px; display: flex; flex-direction: column; gap: 12px;
+    }
+    .espai-panel-title { font-size: 14px; font-weight: 600; }
+    .topic-bar { display: flex; flex-direction: column; gap: 4px; }
+    .topic-bar-header { display: flex; justify-content: space-between; font-size: 12px; }
+    .topic-bar-track { height: 8px; border-radius: 999px; background: white; overflow: hidden; }
+    .topic-bar-fill { height: 100%; border-radius: 999px; }
+    .progress-bar { height: 10px; border-radius: 999px; background: white; overflow: hidden; margin-top: 4px; }
+    .progress-fill { height: 100%; border-radius: 999px; background: var(--primary); }
+    .espai-cta-strip {
+      margin: 0 16px 16px;
+      background: var(--primary); border-radius: 12px;
+      padding: 20px; display: flex;
+      align-items: center; justify-content: space-between; gap: 16px;
+    }
+    @media (max-width: 640px) {
+      .espai-cta-strip { flex-direction: column; text-align: center; }
+    }
+    .espai-cta-strip h4 { color: white; font-weight: 700; margin-bottom: 2px; }
+    .espai-cta-strip p { color: rgba(255,255,255,0.8); font-size: 13px; }
+    .espai-cta-actions { display: flex; flex-direction: column; align-items: center; gap: 6px; flex-shrink: 0; }
+    .btn-white-solid {
+      background: white; color: var(--primary);
+      border: none; padding: 9px 20px;
+      border-radius: 8px; font-size: 14px; font-weight: 600;
+      cursor: pointer; white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+    .btn-white-solid:hover { opacity: 0.9; }
+    .btn-link-white {
+      background: none; border: none;
+      color: rgba(255,255,255,0.85);
+      font-size: 13px; text-decoration: underline;
+      cursor: pointer;
+    }
+
+    /* ── POSA'T A PROVA ── */
+    .prova-section {
+      padding: 32px 1rem;
+      background: #f0fdf4;
+    }
+    .prova-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+    @media (max-width: 640px) { .prova-grid { grid-template-columns: 1fr; } }
+    .prova-card {
+      display: flex; flex-direction: column;
+      gap: 12px; padding: 20px; border-radius: 12px;
+      min-height: 180px;
+    }
+    .prova-card-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ── CONVOCATÒRIES ── */
+    .convocatories-section {
+      padding: 32px 1rem;
+      background: #f6fef9;
+    }
+    .conv-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 20px; }
+    @media (max-width: 768px) { .conv-grid { grid-template-columns: 1fr; } }
+    .conv-card {
+      display: flex; flex-direction: column;
+      gap: 12px; padding: 20px; border-radius: 10px;
+      background: var(--card); border: 2px solid var(--primary);
+      min-height: 160px; transition: box-shadow 0.2s;
+    }
+    .conv-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+    .conv-card-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+    .conv-card h3 { font-size: 13px; font-weight: 700; }
+    .conv-badge {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 600;
+      padding: 3px 10px; border-radius: 999px;
+      white-space: nowrap;
+    }
+    .pulse-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #DC2626; display: inline-block;
+      animation: pulseDot 1.5s ease-in-out infinite;
+    }
+    @keyframes pulseDot {
+      0%,100% { opacity:1; transform:scale(1); }
+      50% { opacity:0.5; transform:scale(0.75); }
+    }
+    .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .pill {
+      background: var(--primary-light); color: var(--primary);
+      font-size: 12px; font-weight: 500;
+      padding: 2px 10px; border-radius: 999px;
+    }
+    .conv-meta { font-size: 12px; color: var(--muted-foreground); }
+    .btn-conv {
+      background: var(--primary); color: white;
+      border: none; padding: 8px; border-radius: 8px;
+      font-size: 13px; font-weight: 600;
+      cursor: pointer; width: 100%; margin-top: auto;
+      transition: opacity 0.15s;
+    }
+    .btn-conv:hover { opacity: 0.88; }
+    .btn-more-conv {
+      width: 100%; margin-top: 12px;
+      background: transparent; color: var(--primary);
+      border: 2px solid var(--primary); padding: 14px;
+      border-radius: 10px; font-size: 14px; font-weight: 700;
+      cursor: pointer; transition: background 0.15s;
+    }
+    .btn-more-conv:hover { background: rgba(29,158,117,0.06); }
+
+    /* ── PRICING ── */
+    .pricing-section {
+      padding: 64px 1rem;
+      background: #f6fef9;
+    }
+    .pricing-banner {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(29,158,117,0.1);
+      border: 1px solid rgba(29,158,117,0.3);
+      border-radius: 12px; padding: 16px 20px;
+      margin-bottom: 32px;
+    }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    @media (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr; } }
+    .pricing-card {
+      position: relative; border-radius: 12px;
+      padding: 24px; display: flex;
+      flex-direction: column; border: 2px solid var(--border);
+    }
+    .pricing-card.featured { border-color: var(--primary); box-shadow: 0 4px 24px rgba(29,158,117,0.12); }
+    .featured-badge {
+      position: absolute; top: -12px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary); color: white;
+      font-size: 12px; font-weight: 700;
+      padding: 4px 12px; border-radius: 999px;
+      white-space: nowrap;
+    }
+    .pricing-name { font-size: 18px; font-weight: 700; }
+    .pricing-price { font-size: 32px; font-weight: 800; margin-top: 12px; }
+    .pricing-note { font-size: 14px; color: var(--muted-foreground); display: inline; }
+    .pricing-old { font-size: 14px; color: var(--muted-foreground); text-decoration: line-through; margin-top: 2px; }
+    .pricing-features { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .feat-item { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+    .feat-icon { width: 16px; height: 16px; flex-shrink: 0; }
+    .feat-icon.check { color: var(--primary); }
+    .feat-icon.cross { color: #d1d5db; }
+    .pricing-btn {
+      margin-top: 24px; width: 100%; padding: 12px;
+      border-radius: 8px; font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: opacity 0.15s;
+    }
+    .pricing-btn.primary { background: var(--primary); color: white; border: none; }
+    .pricing-btn.outline {
+      background: transparent; color: var(--foreground);
+      border: 2px solid var(--border);
+    }
+    .pricing-btn:hover { opacity: 0.85; }
+    .free-note { text-align: center; font-size: 12px; font-weight: 600; color: var(--primary); margin-top: 8px; }
+
+    /* ── FAQ ── */
+    .faq-section { padding: 64px 1rem; background: #f0fdf4; }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; }
+    @media (max-width: 640px) { .faq-grid { grid-template-columns: 1fr; } }
+    .faq-card {
+      background: white; border-radius: 16px;
+      padding: 24px; border: 0.5px solid var(--border);
+    }
+    .faq-icon-wrap {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: hsl(142,76%,94%);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .faq-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+    .faq-card p { font-size: 14px; color: var(--muted-foreground); line-height: 1.6; }
+    .btn-all-faqs {
+      display: block; width: 100%; margin-top: 32px;
+      border: 2px solid var(--primary); color: var(--primary);
+      background: transparent; padding: 20px;
+      border-radius: 10px; font-size: 14px; font-weight: 700;
+      cursor: pointer; text-align: center; transition: background 0.15s;
+    }
+    .btn-all-faqs:hover { background: rgba(29,158,117,0.06); }
+
+    /* ── RECURSOS ── */
+    .recursos-section { padding: 64px 1rem; background: #f6fef9; }
+    .recursos-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 32px; }
+    @media (max-width: 640px) { .recursos-grid { grid-template-columns: 1fr; } }
+    .recurs-card {
+      position: relative; display: flex; flex-direction: column;
+      overflow: hidden; border-radius: 20px;
+      padding: 24px 18px 22px;
+      transition: transform 0.2s;
+    }
+    .recurs-card:hover { transform: translateY(-3px); }
+    .recurs-deco {
+      position: absolute; width: 70px; height: 70px;
+      border-radius: 50%; bottom: -10px; right: -10px;
+      pointer-events: none;
+    }
+    .recurs-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px;
+    }
+    .recurs-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; margin-bottom: 4px;
+    }
+    .recurs-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    .recurs-desc { font-size: 12px; line-height: 1.6; }
+    .recurs-arrow {
+      display: flex; justify-content: flex-end;
+      margin-top: auto; padding-top: 12px; position: relative; z-index: 1;
+    }
+    .recurs-arrow-btn {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ── BLOG ── */
+    .blog-section { padding: 48px 1rem; background: #f0fdf4; }
+    .blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 32px; }
+    @media (max-width: 768px) { .blog-grid { grid-template-columns: 1fr; } }
+    .blog-card {
+      border-radius: 12px; border: 1px solid var(--border);
+      background: var(--card); overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: box-shadow 0.2s;
+    }
+    .blog-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+    .blog-img { width: 100%; height: 144px; object-fit: cover; }
+    .blog-content { padding: 16px; display: flex; flex-direction: column; flex: 1; }
+    .blog-date { font-size: 12px; color: var(--muted-foreground); margin-bottom: 6px; }
+    .blog-title { font-size: 13px; font-weight: 700; line-height: 1.4; margin-bottom: 6px; }
+    .blog-extract { font-size: 12px; color: var(--muted-foreground); flex: 1; }
+    .blog-read { font-size: 12px; font-weight: 600; color: var(--primary); margin-top: 8px; }
+    .blog-cta { text-align: center; margin-top: 24px; }
+    .blog-link { font-size: 14px; font-weight: 600; color: var(--primary); }
+    .blog-link:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      background: white;
+      padding: 56px 1.5rem 24px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 40px; max-width: 72rem; margin: 0 auto;
+    }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-col-title { font-size: 13px; font-weight: 700; margin-bottom: 16px; }
+    .footer-logo { height: 48px; width: auto; margin-bottom: 12px; }
+    .footer-tagline { font-size: 13px; color: var(--muted-foreground); line-height: 1.6; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a { font-size: 13px; font-weight: 700; color: var(--muted-foreground); transition: color 0.15s; }
+    .footer-links a:hover { color: var(--primary); }
+    .footer-legal a { font-size: 13px; color: var(--muted-foreground); transition: color 0.15s; }
+    .footer-legal a:hover { color: var(--primary); }
+    .footer-email { font-size: 13px; color: var(--muted-foreground); display: block; margin-bottom: 16px; }
+    .social-icons { display: flex; gap: 12px; }
+    .social-icons a { color: var(--primary); transition: opacity 0.15s; }
+    .social-icons a:hover { opacity: 0.7; }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+      padding-top: 24px; margin-top: 48px;
+      border-top: 1px solid var(--border);
+      max-width: 72rem; margin-left: auto; margin-right: auto;
+    }
+    .footer-copy { font-size: 12px; color: var(--muted-foreground); }
+    .footer-payments { display: flex; align-items: center; gap: 8px; color: var(--muted-foreground); font-size: 12px; }
+    .payment-badge {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 3px 8px; border-radius: 4px;
+      border: 1px solid var(--border); background: rgba(255,255,255,0.5);
+    }
+
+    /* SVG icons inline */
+    svg { display: inline-block; vertical-align: middle; }
+
+    /* ── RESPONSIVE HELPERS ── */
+    @media (max-width: 768px) {
+      .nav-links, .nav-actions { display: none; }
+      .nav-mobile-toggle { display: block; }
+      .hero { padding: 60px 1rem 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- BETA BANNER -->
+<div class="beta-banner" id="betaBanner">
+  <div class="beta-banner-content">
+    <strong>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M4 20V10l8-8 8 8v10"/><path d="M9 20v-5h6v5"/></svg>
+      OposUp està en fase de proves.
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M4 20V10l8-8 8 8v10"/><path d="M9 20v-5h6v5"/></svg>
+    </strong>
+    <p>Estem en fase de proves però ja pots explorar la plataforma lliurement. Gratuït fins el 15 de juny!</p>
+  </div>
+  <button class="beta-close" onclick="document.getElementById('betaBanner').style.display='none'">✕</button>
+</div>
+
+<!-- TOP BANNER -->
+<div class="top-banner">
+  ACCÉS GRATUÏT → Prova OposUp gratis fins al 15 de juny. Sense targeta de crèdit.
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://app.oposup.com/">
+      <img src="Logo_OposUpOK.jpg" alt="OposUp" class="nav-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <span style="display:none;font-size:22px;font-weight:800;color:var(--primary)">OposUp</span>
+    </a>
+    <div class="nav-links">
+      <a href="#temari">TESTS</a>
+      <a href="https://app.oposup.com/library">EXÀMENS</a>
+      <a href="https://app.oposup.com/flashcards">FLASHCARDS GRATIS</a>
+      <a href="#preus">PREUS</a>
+      <a href="https://blog.oposup.com" target="_blank" rel="noopener">BLOG</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-ghost" onclick="window.location.href='https://app.oposup.com/login'">Iniciar sessió</button>
+      <button class="btn-primary" onclick="window.location.href='https://app.oposup.com/register'">Registra't</button>
+    </div>
+    <button class="nav-mobile-toggle" onclick="toggleMobileMenu()" aria-label="Menú">
+      <svg id="menuIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <a href="#temari" onclick="closeMobileMenu()">TESTS</a>
+    <a href="https://app.oposup.com/library">EXÀMENS</a>
+    <a href="https://app.oposup.com/flashcards">FLASHCARDS GRATIS</a>
+    <a href="#preus" onclick="closeMobileMenu()">PREUS</a>
+    <a href="https://blog.oposup.com" target="_blank" rel="noopener">BLOG</a>
+    <div class="nav-mobile-actions">
+      <button class="btn-ghost" onclick="window.location.href='https://app.oposup.com/login'">Iniciar sessió</button>
+      <button class="btn-primary" onclick="window.location.href='https://app.oposup.com/register'">Registra't</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container max-5xl">
+    <h1>Tests 100% reals<br>per aprovar les teves oposicions</h1>
+    <p>+3.000 preguntes d'exàmens oficials amb explicació detallada de cada resposta.</p>
+  </div>
+</section>
+
+<!-- COMENÇA ARA -->
+<section class="start-now">
+  <div class="container max-5xl" style="display:flex;flex-direction:column;gap:16px;">
+    <p class="section-label">Comença ara — Gratuït</p>
+
+    <!-- Hero card per a visitants -->
+    <div class="hero-card">
+      <div class="hero-card-grid">
+        <div class="hero-card-left">
+          <span class="badge-green">Per on començar</span>
+          <h3>Test ràpid</h3>
+          <p class="desc">Descobreix com funciona la plataforma en 1 minut · Sense registre</p>
+          <button class="btn-big-green" onclick="window.location.href='https://app.oposup.com/test?type=quick5'">
+            Fer el test de mostra
+          </button>
+        </div>
+        <div class="hero-card-right">
+          <div class="hero-card-block green">
+            <strong>Exàmens oficials</strong>
+            <p style="margin-top:4px;">Preguntes extretes d'exàmens de la Generalitat, ajuntaments i diputacions</p>
+          </div>
+          <div class="hero-card-block light">
+            <strong>+3.000 preguntes reals</strong>
+            <p style="margin-top:4px;">Veu el teu progrés, compara't amb altres opositors i identifica on pots millorar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Temari comú + Temari específic -->
+    <div id="temari" class="temari-grid">
+      <div class="temari-card" style="background:#F5F0E8;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="temari-card-icon" style="background:#E8E0D0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5a4f3a" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <p class="temari-card-title">Temari comú</p>
+        </div>
+        <p class="temari-card-desc" style="color:#5a4f3a;">Preguntes comunes a totes les convocatòries, organitzades per tema</p>
+        <button class="btn-white" onclick="window.location.href='https://app.oposup.com/temes'">Triar tema</button>
+      </div>
+
+      <div class="temari-card" style="background:#FAEEDA;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="temari-card-icon" style="background:#FAC775;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#633806" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <p class="temari-card-title">Temari específic</p>
+        </div>
+        <p class="temari-card-desc" style="color:#854F0B;">Practica només el que entrarà al teu examen, adaptat a la teva especialitat</p>
+        <button class="btn-white" onclick="window.location.href='https://app.oposup.com/register'">Triar especialitat</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIBLIOTECA D'EXÀMENS -->
+<section class="exam-library">
+  <div class="container max-5xl">
+    <h2>Tots els exàmens oficials, en un sol lloc</h2>
+    <p class="subtitle">Practica amb exàmens reals de les principals administracions públiques catalanes.</p>
+
+    <div class="metrics-grid">
+      <div class="metric-card" style="background:#E1F5EE;">
+        <div class="metric-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div>
+          <div class="metric-value">50+</div>
+          <div class="metric-label">Exàmens disponibles</div>
+        </div>
+      </div>
+      <div class="metric-card" style="background:#FBEFD6;">
+        <div class="metric-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div>
+          <div class="metric-value">+3.000</div>
+          <div class="metric-label">Preguntes totals</div>
+        </div>
+      </div>
+      <div class="metric-card" style="background:#EFE9FB;">
+        <div class="metric-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6B4FBB" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <div class="metric-value">5+</div>
+          <div class="metric-label">Institucions</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exam-cards-grid">
+      <div class="exam-card">
+        <div class="exam-card-header">
+          <div>
+            <h3>Auxiliar Administratiu (C2)</h3>
+            <p class="source">Generalitat de Catalunya</p>
+          </div>
+          <div class="year">2024</div>
+        </div>
+        <span class="badge-green-light">100 preguntes</span>
+        <div class="exam-card-actions">
+          <button class="btn-sm primary" onclick="window.location.href='https://app.oposup.com/register'">Simulacre</button>
+          <button class="btn-sm outline" onclick="window.location.href='https://app.oposup.com/register'">Practicar</button>
+        </div>
+      </div>
+
+      <div class="exam-card">
+        <div class="exam-card-header">
+          <div>
+            <h3>Administratiu (C1)</h3>
+            <p class="source">Ajuntament de Barcelona</p>
+          </div>
+          <div class="year">2023</div>
+        </div>
+        <span class="badge-green-light">90 preguntes</span>
+        <div class="exam-card-actions">
+          <button class="btn-sm primary" onclick="window.location.href='https://app.oposup.com/register'">Simulacre</button>
+          <button class="btn-sm outline" onclick="window.location.href='https://app.oposup.com/register'">Practicar</button>
+        </div>
+      </div>
+
+      <div class="exam-card">
+        <div class="exam-card-header">
+          <div>
+            <h3>Gestió (A2)</h3>
+            <p class="source">Diputació de Barcelona</p>
+          </div>
+          <div class="year">2024</div>
+        </div>
+        <span class="badge-green-light">80 preguntes</span>
+        <div class="exam-card-actions">
+          <button class="btn-sm primary" onclick="window.location.href='https://app.oposup.com/register'">Simulacre</button>
+          <button class="btn-sm outline" onclick="window.location.href='https://app.oposup.com/register'">Practicar</button>
+        </div>
+      </div>
+
+      <div class="exam-card">
+        <div class="exam-card-header">
+          <div>
+            <h3>Auxiliar Administratiu (C2)</h3>
+            <p class="source">Ajuntament de Sant Cugat</p>
+          </div>
+          <div class="year">2023</div>
+        </div>
+        <span class="badge-green-light">85 preguntes</span>
+        <div class="exam-card-actions">
+          <button class="btn-sm primary" onclick="window.location.href='https://app.oposup.com/register'">Simulacre</button>
+          <button class="btn-sm outline" onclick="window.location.href='https://app.oposup.com/register'">Practicar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exam-library-cta">
+      <button class="btn-lg" onclick="window.location.href='https://app.oposup.com/library'">
+        Veure tots els exàmens
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- EL TEU ESPAI (demo il·lustratiu) -->
+<section class="espai-section">
+  <div class="container max-5xl" style="display:flex;flex-direction:column;gap:12px;">
+    <p class="section-label">El teu espai</p>
+    <p class="espai-note">Així és com es veurà el teu progrés un cop et registris. Cada dia més a prop de l'examen.</p>
+    <span class="example-badge">Exemple il·lustratiu</span>
+
+    <div class="espai-card">
+      <div class="espai-topbar">
+        <div style="display:flex;align-items:center;gap:12px;min-width:0;">
+          <div class="avatar">M</div>
+          <div>
+            <p class="espai-name">Maria</p>
+            <p class="espai-sub">C1 Administratiu · 142 dies per l'examen</p>
+          </div>
+        </div>
+        <div class="streak-badge">🔥 8 dies seguits</div>
+      </div>
+
+      <div class="metrics-row">
+        <div class="mini-metric" style="background:#E8DCC8;">
+          <span class="mini-metric-label">Respostes</span>
+          <span class="mini-metric-value">847</span>
+        </div>
+        <div class="mini-metric" style="background:#E8F5E6;">
+          <span class="mini-metric-label">% Encert</span>
+          <span class="mini-metric-value" style="color:var(--primary)">73%</span>
+        </div>
+        <div class="mini-metric" style="background:#FDE8E6;">
+          <span class="mini-metric-label">Errors pendents</span>
+          <span class="mini-metric-value" style="color:var(--destructive)">12</span>
+        </div>
+        <div class="mini-metric" style="background:#f3f4f6;">
+          <span class="mini-metric-label">Ratxa</span>
+          <span class="mini-metric-value" style="color:#BA7517">🔥 8</span>
+        </div>
+      </div>
+
+      <div class="espai-panels">
+        <div class="espai-panel">
+          <p class="espai-panel-title">Temes forts i dèbils</p>
+          <div class="topic-bar">
+            <div class="topic-bar-header">
+              <span style="color:var(--muted-foreground);font-size:12px;">Constitució Espanyola</span>
+              <span style="font-weight:600;color:var(--primary);font-size:12px;">91%</span>
+            </div>
+            <div class="topic-bar-track"><div class="topic-bar-fill" style="width:91%;background:var(--primary)"></div></div>
+          </div>
+          <div class="topic-bar">
+            <div class="topic-bar-header">
+              <span style="color:var(--muted-foreground);font-size:12px;">Organització territorial</span>
+              <span style="font-weight:600;color:var(--primary);font-size:12px;">78%</span>
+            </div>
+            <div class="topic-bar-track"><div class="topic-bar-fill" style="width:78%;background:var(--primary)"></div></div>
+          </div>
+          <div class="topic-bar">
+            <div class="topic-bar-header">
+              <span style="color:var(--muted-foreground);font-size:12px;">Procediment administratiu</span>
+              <span style="font-weight:600;color:#EF9F27;font-size:12px;">64%</span>
+            </div>
+            <div class="topic-bar-track"><div class="topic-bar-fill" style="width:64%;background:#EF9F27"></div></div>
+          </div>
+          <div class="topic-bar">
+            <div class="topic-bar-header">
+              <span style="color:var(--muted-foreground);font-size:12px;">Contractes sector públic</span>
+              <span style="font-weight:600;color:var(--destructive);font-size:12px;">42%</span>
+            </div>
+            <div class="topic-bar-track"><div class="topic-bar-fill" style="width:42%;background:var(--destructive)"></div></div>
+          </div>
+        </div>
+        <div class="espai-panel">
+          <p class="espai-panel-title">Objectiu diari</p>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted-foreground);">
+              <span>15 de 20 preguntes</span><span>75%</span>
+            </div>
+            <div class="progress-bar" style="margin-top:6px;"><div class="progress-fill" style="width:75%"></div></div>
+          </div>
+          <p style="font-size:12px;color:var(--muted-foreground);">Te'n falten 5 per completar l'objectiu d'avui</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="background:white;border-radius:8px;padding:10px;text-align:center;">
+              <p style="font-size:18px;font-weight:700;">4</p>
+              <p style="font-size:11px;color:var(--muted-foreground);">Dies aquesta setmana</p>
+            </div>
+            <div style="background:white;border-radius:8px;padding:10px;text-align:center;">
+              <p style="font-size:18px;font-weight:700;">8</p>
+              <p style="font-size:11px;color:var(--muted-foreground);">Ratxa actual</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="espai-cta-strip">
+        <div>
+          <h4>El teu espai t'espera</h4>
+          <p>Comença avui i en pocs dies ja veuràs el teu progrés real.</p>
+        </div>
+        <div class="espai-cta-actions">
+          <button class="btn-white-solid" onclick="window.location.href='https://app.oposup.com/register'">Crear compte gratuït</button>
+          <button class="btn-link-white" onclick="window.location.href='https://app.oposup.com/login'">Ja tens compte?</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POSA'T A PROVA -->
+<section class="prova-section">
+  <div class="container max-5xl">
+    <p class="section-label">Posa't a prova</p>
+    <div class="prova-grid">
+      <div class="prova-card" style="background:#F5F0E8;border:1px solid #E0DBD0;">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+          <div class="prova-card-icon" style="background:#E8E0D0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5a4f3a" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <h3 style="font-size:15px;font-weight:700;">Simulacre d'examen</h3>
+          <span style="background:#fef3c7;color:#b45309;border:1px solid rgba(245,158,11,0.4);font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;">⭐ Premium</span>
+        </div>
+        <p style="font-size:13px;font-weight:600;color:#5a4f3a;flex:1;">Practica amb exàmens 100% reals de les darreres convocatòries. Temps limitat, puntuació oficial.</p>
+        <button style="background:#f59e0b;color:white;border:none;padding:10px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;width:100%;" onclick="window.location.href='https://app.oposup.com/register'">Fer examen</button>
+      </div>
+
+      <div class="prova-card" style="background:var(--primary);">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="prova-card-icon" style="background:rgba(255,255,255,0.15);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+          </div>
+          <h3 style="font-size:15px;font-weight:700;color:white;">Repte del mes</h3>
+        </div>
+        <p style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);flex:1;">Competeix amb altres opositors aquest mes i demostra el que saps. El guanyador s'emporta 2 mesos de Premium gratis.</p>
+        <p style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.6);">Tanca el 30 de maig</p>
+        <button style="background:white;color:var(--primary);border:none;padding:10px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;width:100%;" onclick="window.location.href='https://app.oposup.com/register'">Participar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONVOCATÒRIES ACTIVES -->
+<section class="convocatories-section">
+  <div class="container max-5xl">
+    <p class="section-label">Convocatòries actives</p>
+    <div class="conv-grid">
+      <!-- Generalitat -->
+      <div class="conv-card">
+        <div class="conv-card-header">
+          <h3>Generalitat de Catalunya</h3>
+          <span class="conv-badge" style="background:#FEE2E2;color:#991B1B;">
+            <span class="pulse-dot"></span>
+            Termini proper
+          </span>
+        </div>
+        <div class="pills">
+          <span class="pill">A1</span><span class="pill">A2</span><span class="pill">C1</span><span class="pill">C2</span>
+        </div>
+        <div class="conv-meta">
+          <p>Examen: a partir de juny de 2026</p>
+          <p>Places: 8.474</p>
+        </div>
+        <button class="btn-conv" onclick="window.location.href='https://app.oposup.com/convocatoria/info/generalitat'">Més informació</button>
+      </div>
+
+      <!-- Ajuntament Barcelona -->
+      <div class="conv-card">
+        <div class="conv-card-header">
+          <h3>Ajuntament de Barcelona</h3>
+        </div>
+        <div class="pills">
+          <span class="pill">A1</span><span class="pill">A2</span><span class="pill">C1</span><span class="pill">C2</span>
+        </div>
+        <div class="conv-meta">
+          <p>Examen: per determinar</p>
+          <p>Places: 530</p>
+        </div>
+        <button class="btn-conv" onclick="window.location.href='https://app.oposup.com/convocatoria/info/ajuntament_barcelona'">Més informació</button>
+      </div>
+
+      <!-- Diputació Barcelona -->
+      <div class="conv-card">
+        <div class="conv-card-header">
+          <h3>Diputació de Barcelona</h3>
+        </div>
+        <div class="pills">
+          <span class="pill">A1</span><span class="pill">A2</span><span class="pill">C1</span><span class="pill">C2</span>
+        </div>
+        <div class="conv-meta">
+          <p>Examen: per determinar</p>
+          <p>Places: 695</p>
+        </div>
+        <button class="btn-conv" onclick="window.location.href='https://app.oposup.com/convocatoria/info/diputacio_barcelona'">Més informació</button>
+      </div>
+    </div>
+    <button class="btn-more-conv" onclick="window.location.href='https://app.oposup.com/convocatoria'">+ Veure totes les convocatòries</button>
+  </div>
+</section>
+
+<!-- PREUS -->
+<section class="pricing-section" id="preus">
+  <div class="container max-4xl">
+    <p class="section-label">Preus</p>
+    <p style="font-size:14px;font-weight:600;color:var(--amber);margin-top:8px;margin-bottom:16px;">Oferta de llançament — Gratuït per temps limitat</p>
+
+    <div class="pricing-banner">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" flex-shrink="0"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+      <div>
+        <p style="font-weight:700;color:var(--primary);font-size:14px;">Accés 100% gratuït fins al 15 de juny</p>
+        <p style="font-size:13px;color:var(--muted-foreground);margin-top:2px;">Sense targeta de crèdit. Prova totes les funcions Premium sense cost. A partir del 15 de juny, els plans de pagament s'activaran.</p>
+      </div>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Gratuït -->
+      <div class="pricing-card">
+        <p class="pricing-name">Gratuït</p>
+        <p class="pricing-price">0€</p>
+        <div class="pricing-features">
+          <div class="feat-item"><svg class="feat-icon check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>3 tests al dia</div>
+          <div class="feat-item"><svg class="feat-icon check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Temari comú</div>
+          <div class="feat-item"><svg class="feat-icon check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Explicacions</div>
+          <div class="feat-item"><svg class="feat-icon check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Per recordar</div>
+          <div class="feat-item" style="opacity:0.5"><svg class="feat-icon cross" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Tests il·limitats</div>
+          <div class="feat-item" style="opacity:0.5"><svg class="feat-icon cross" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Temari específic</div>
+          <div class="feat-item" style="opacity:0.5"><svg class="feat-icon cross" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Simulacres</div>
+          <div class="feat-item" style="opacity:0.5"><svg class="feat-icon cross" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Dashboard</div>
+        </div>
+        <button class="pricing-btn outline" onclick="window.location.href='https://app.oposup.com/register'">Comença gratis</button>
+      </div>
+
+      <!-- Premium Mensual -->
+      <div class="pricing-card featured">
+        <div class="featured-badge">Més popular</div>
+        <p class="pricing-name">Premium Mensual</p>
+        <p class="pricing-price">9,95€ <span class="pricing-note">/mes</span></p>
+        <p class="pricing-old">14,95€</p>
+        <div class="pricing-features">
+          <div class="feat-item"><svg class="feat-icon check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Tests il·limitats</div>
+          <div class="feat-item"><svg class="feat-icon check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>+3.000 preguntes</div>
+          <div class="feat-item"><svg class="feat-icon check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Temari comú i específic</div>
+          <div class="feat-item"><svg class="feat-icon check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Simulacres</div>
+          <div class="feat-item"><svg class="feat-icon check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Repàs d'errors</div>
+          <div class="feat-item"><svg class="feat-icon check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Dashboard personal</div>
+        </div>
+        <button class="pricing-btn primary" onclick="window.location.href='https://app.oposup.com/register'">Fes-te Premium</button>
+        <p class="free-note">🎁 Gratuït fins el 15 de juny</p>
+      </div>
+
+      <!-- Premium Semestral -->
+      <div class="pricing-card">
+        <p class="pricing-name">Premium Semestral</p>
+        <p class="pricing-price">29,95€ <span class="pricing-note">/6 mesos</span></p>
+        <p class="pricing-old">59,95€</p>
+        <div class="pricing-features">
+          <div class="feat-item"><svg class="feat-icon check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Tot el del Mensual</div>
+          <div class="feat-item"><svg class="feat-icon check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Estalvia un 50%</div>
+        </div>
+        <button class="pricing-btn outline" onclick="window.location.href='https://app.oposup.com/register'">Premium Semestral</button>
+        <p class="free-note">🎁 Gratuït fins el 15 de juny</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQs -->
+<section class="faq-section" id="faqs">
+  <div class="container max-4xl">
+    <p class="section-label">Preguntes freqüents</p>
+    <div class="faq-grid">
+      <div class="faq-card">
+        <div class="faq-icon-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+        </div>
+        <h3>És realment gratis fins al 15 de juny? Em demanareu la targeta?</h3>
+        <p>Sí, és 100% gratuït i no hi ha lletra petita. No et demanarem cap número de targeta. Volem que tinguis temps per comprovar si realment t'ajuda a estudiar. El 15 de juny tu decidiràs.</p>
+      </div>
+      <div class="faq-card">
+        <div class="faq-icon-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="15" y2="16"/></svg>
+        </div>
+        <h3>D'on surten les preguntes? Són inventades?</h3>
+        <p>No ens inventem res. Més de 3.000 preguntes extretes directament d'exàmens oficials de la Generalitat, Diputacions i Ajuntaments. Practicaràs amb el mateix nivell que et trobaràs el dia de l'examen.</p>
+      </div>
+      <div class="faq-card">
+        <div class="faq-icon-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Les preguntes estan actualitzades a la legislació vigent?</h3>
+        <p>Absolutament. Estudiar amb una llei derogada pot fer-te perdre la plaça. El nostre equip revisa i actualitza constantment la base de dades, amb l'article concret de la llei a cada explicació.</p>
+      </div>
+      <div class="faq-card">
+        <div class="faq-icon-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <h3>Puc fer els tests des del mòbil mentre vaig al transport públic?</h3>
+        <p>I tant. OposUp funciona a qualsevol dispositiu. Simulacres llargs des de l'ordinador o un test ràpid de 10 preguntes des del mòbil al metro. El teu progrés se sincronitza a l'instant.</p>
+      </div>
+    </div>
+    <a href="https://app.oposup.com/faqs" class="btn-all-faqs">
+      Tens més dubtes? Consulta totes les preguntes freqüents →
+    </a>
+  </div>
+</section>
+
+<!-- RECURSOS D'ESTUDI -->
+<section class="recursos-section">
+  <div class="container max-3xl">
+    <p class="section-label" style="color:#3A7D44;">Recursos d'estudi</p>
+    <div class="recursos-grid">
+      <!-- Consells -->
+      <a href="https://app.oposup.com/recursos/consells" class="recurs-card" style="background:#FDE8E6;border:1.5px solid #F8D2CF;">
+        <div class="recurs-deco" style="background:rgba(226,75,74,0.08);"></div>
+        <div class="recurs-icon" style="background:rgba(226,75,74,0.14);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E24B4A" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <span class="recurs-label" style="color:#C97A78;">GUIA PRÀCTICA</span>
+        <span class="recurs-title" style="color:#1a1a1a;">Consells per a opositors</span>
+        <span class="recurs-desc" style="color:#7A4543;">Tècniques i mètodes provats per preparar oposicions i aprovar al primer intent.</span>
+        <div class="recurs-arrow">
+          <div class="recurs-arrow-btn" style="background:rgba(226,75,74,0.14);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E24B4A" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Flashcards -->
+      <a href="https://app.oposup.com/flashcards" class="recurs-card" style="background:#1D9E75;border:1.5px solid #178660;">
+        <div class="recurs-deco" style="background:rgba(255,255,255,0.08);"></div>
+        <div class="recurs-icon" style="background:rgba(255,255,255,0.18);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.95)" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <span class="recurs-label" style="color:rgba(255,255,255,0.7);">ESTUDI ACTIU</span>
+        <span class="recurs-title" style="color:white;">Flashcards</span>
+        <span class="recurs-desc" style="color:rgba(255,255,255,0.85);">Repassa els conceptes clau amb targetes interactives. La manera més eficaç de memoritzar.</span>
+        <div class="recurs-arrow">
+          <div class="recurs-arrow-btn" style="background:rgba(255,255,255,0.18);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.95)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Enllaços -->
+      <a href="https://app.oposup.com/recursos/enllacos" class="recurs-card" style="background:#FBEFD6;border:1.5px solid #F2E2BC;">
+        <div class="recurs-deco" style="background:rgba(186,117,23,0.08);"></div>
+        <div class="recurs-icon" style="background:rgba(186,117,23,0.14);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <span class="recurs-label" style="color:#B89556;">RECURSOS EXTERNS</span>
+        <span class="recurs-title" style="color:#1a1a1a;">Enllaços útils</span>
+        <span class="recurs-desc" style="color:#7A5A1F;">Webs i documents oficials per complementar el teu estudi.</span>
+        <div class="recurs-arrow">
+          <div class="recurs-arrow-btn" style="background:rgba(186,117,23,0.14);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog-section">
+  <div class="container max-4xl">
+    <p class="section-label">Blog</p>
+    <div class="blog-grid" id="blogGrid">
+      <!-- Els articles es carreguen dinàmicament des de Hashnode -->
+      <div class="blog-card" style="padding:24px;display:flex;align-items:center;justify-content:center;min-height:160px;">
+        <div style="width:28px;height:28px;border:3px solid var(--primary-light);border-top-color:var(--primary);border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+      </div>
+      <div class="blog-card" style="padding:24px;display:flex;align-items:center;justify-content:center;min-height:160px;">
+        <div style="width:28px;height:28px;border:3px solid var(--primary-light);border-top-color:var(--primary);border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+      </div>
+      <div class="blog-card" style="padding:24px;display:flex;align-items:center;justify-content:center;min-height:160px;">
+        <div style="width:28px;height:28px;border:3px solid var(--primary-light);border-top-color:var(--primary);border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+      </div>
+    </div>
+    <div class="blog-cta">
+      <a href="https://blog.oposup.com" target="_blank" rel="noopener" class="blog-link">Veure tots els articles →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="Logo_OposUpOK.jpg" alt="OposUp" class="footer-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <span style="display:none;font-size:20px;font-weight:800;color:var(--primary)">OposUp</span>
+      <p class="footer-tagline">La plataforma de tests per preparar oposicions de l'administració pública catalana.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Navegació</p>
+      <ul class="footer-links">
+        <li><a href="#temari">TESTS</a></li>
+        <li><a href="https://app.oposup.com/library">EXÀMENS</a></li>
+        <li><a href="https://app.oposup.com/flashcards">FLASHCARDS GRATIS</a></li>
+        <li><a href="#preus">PREUS</a></li>
+        <li><a href="https://blog.oposup.com" target="_blank" rel="noopener">BLOG</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Contacte</p>
+      <a href="mailto:info@oposup.com" class="footer-email">info@oposup.com</a>
+      <div class="social-icons">
+        <a href="#" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" aria-label="X (Twitter)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16M4 20L20 4"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <p class="footer-col-title">Legal</p>
+      <ul class="footer-links footer-legal">
+        <li><a href="https://app.oposup.com/legal/privacitat">Política de privacitat</a></li>
+        <li><a href="https://app.oposup.com/legal/termes">Termes i condicions</a></li>
+        <li><a href="https://app.oposup.com/legal/cookies">Política de cookies</a></li>
+        <li><a href="https://app.oposup.com/legal/avis-legal">Avís legal</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 OposUp. Tots els drets reservats.</p>
+    <div class="footer-payments">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span>Pagament 100% Segur</span>
+      <span class="payment-badge">VISA</span>
+      <span class="payment-badge">MC</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // Smooth scroll per a àncores internes
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        closeMobileMenu();
+      }
+    });
+  });
+
+  // ── BLOG: crida a l'API de Hashnode amb fallback estàtic ──
+  const BLOG_FALLBACK = [
+    {
+      title: "Com preparar les oposicions a la Generalitat de Catalunya el 2026",
+      brief: "Guia pràctica per afrontar les 8.474 places convocades amb les millors estratègies d'estudi.",
+      url: "https://blog.oposup.com",
+      publishedAt: "2026-05-20"
+    },
+    {
+      title: "Tot sobre les oposicions de l'Ajuntament de Barcelona 2026",
+      brief: "530 places convocades per a l'administració municipal. Dates, places i consells per aprovar.",
+      url: "https://blog.oposup.com",
+      publishedAt: "2026-05-15"
+    },
+    {
+      title: "Diputació de Barcelona: 695 places i com preparar-les",
+      brief: "Anàlisi detallada de les oposicions de la DIBA i el seu PAMO 2026 amb els cossos més demanats.",
+      url: "https://blog.oposup.com",
+      publishedAt: "2026-05-10"
+    }
+  ];
+
+  function renderPosts(posts) {
+    const grid = document.getElementById('blogGrid');
+    grid.innerHTML = posts.map(post => {
+      const date = new Date(post.publishedAt).toLocaleDateString('ca', {
+        day: 'numeric', month: 'short', year: 'numeric'
+      });
+      const img = post.coverImage?.url
+        ? `<img src="${post.coverImage.url}" alt="${post.title}" class="blog-img" loading="lazy"/>`
+        : '';
+      const brief = post.brief
+        ? `<p class="blog-extract">${post.brief.slice(0, 120)}${post.brief.length > 120 ? '…' : ''}</p>`
+        : '';
+      return `
+        <a href="${post.url}" target="_blank" rel="noopener" class="blog-card">
+          ${img}
+          <div class="blog-content">
+            <p class="blog-date">${date}</p>
+            <p class="blog-title">${post.title}</p>
+            ${brief}
+            <span class="blog-read">Continua llegint →</span>
+          </div>
+        </a>`;
+    }).join('');
+  }
+
+  async function loadBlogPosts() {
+    const query = `
+      query {
+        publication(host: "blog.oposup.com") {
+          posts(first: 3) {
+            edges {
+              node {
+                title
+                brief
+                url
+                publishedAt
+                coverImage { url }
+              }
+            }
+          }
+        }
+      }
+    `;
+
+    // Timeout de 3 segons — si l'API no respon, mostra el fallback
+    const timeout = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('timeout')), 3000)
+    );
+
+    try {
+      const res = await Promise.race([
+        fetch('https://gql.hashnode.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query })
+        }),
+        timeout
+      ]);
+
+      const { data } = await res.json();
+      const posts = data?.publication?.posts?.edges?.map(e => e.node) ?? [];
+
+      if (posts.length > 0) {
+        renderPosts(posts);
+      } else {
+        renderPosts(BLOG_FALLBACK);
+      }
+    } catch (err) {
+      // API no disponible o timeout → fallback estàtic
+      renderPosts(BLOG_FALLBACK);
+    }
+  }
+
+  loadBlogPosts();
+</script>
+<style>
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+</style>
+</body>
+</html>
