@@ -670,6 +670,7 @@
       .hero { padding: 60px 1rem 20px; }
     }
   </style>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -1419,7 +1420,6 @@
       }
     `;
 
-    // Timeout de 3 segons — si l'API no respon, mostra el fallback
     const timeout = new Promise((_, reject) =>
       setTimeout(() => reject(new Error('timeout')), 3000)
     );
@@ -1443,7 +1443,6 @@
         renderPosts(BLOG_FALLBACK);
       }
     } catch (err) {
-      // API no disponible o timeout → fallback estàtic
       renderPosts(BLOG_FALLBACK);
     }
   }
