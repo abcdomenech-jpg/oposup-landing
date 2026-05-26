@@ -670,33 +670,20 @@
       .hero { padding: 60px 1rem 20px; }
     }
   </style>
-  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
 <!-- BETA BANNER -->
-<div class="beta-banner" id="betaBanner">
-  <div class="beta-banner-content">
-    <strong>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M4 20V10l8-8 8 8v10"/><path d="M9 20v-5h6v5"/></svg>
-      OposUp està en fase de proves.
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M4 20V10l8-8 8 8v10"/><path d="M9 20v-5h6v5"/></svg>
-    </strong>
-    <p>Estem en fase de proves però ja pots explorar la plataforma lliurement. Gratuït fins el 15 de juny!</p>
-  </div>
-  <button class="beta-close" onclick="document.getElementById('betaBanner').style.display='none'">✕</button>
-</div>
-
 <!-- TOP BANNER -->
 <div class="top-banner">
-  ACCÉS GRATUÏT → Prova OposUp gratis fins al 15 de juny. Sense targeta de crèdit.
+  OposUp està en fase de proves. <strong>ACCÉS GRATUÏT FINS EL 15 DE JUNY.</strong> Sense targeta de crèdit.
 </div>
 
 <!-- NAVBAR -->
 <nav>
   <div class="nav-inner">
     <a href="https://app.oposup.com/">
-      <img src="Logo_OposUpOK.jpg" alt="OposUp" class="nav-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <img src="https://oposup.com/Logo_OposUpOK.jpg" alt="OposUp" class="nav-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
       <span style="display:none;font-size:22px;font-weight:800;color:var(--primary)">OposUp</span>
     </a>
     <div class="nav-links">
@@ -1282,7 +1269,7 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <img src="Logo_OposUpOK.jpg" alt="OposUp" class="footer-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <img src="https://oposup.com/Logo_OposUpOK.jpg" alt="OposUp" class="footer-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
       <span style="display:none;font-size:20px;font-weight:800;color:var(--primary)">OposUp</span>
       <p class="footer-tagline">La plataforma de tests per preparar oposicions de l'administració pública catalana.</p>
     </div>
@@ -1300,15 +1287,15 @@
       <p class="footer-col-title">Contacte</p>
       <a href="mailto:info@oposup.com" class="footer-email">info@oposup.com</a>
       <div class="social-icons">
-        <a href="https://www.instagram.com/opos.up/" target="_blank" rel="noopener" aria-label="Instagram">
+        <a href="#" aria-label="Instagram">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
         </a>
-        <a href="https://www.youtube.com/@OposUp" target="_blank" rel="noopener" aria-label="YouTube">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58a2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
-</a>
-<a href="https://www.tiktok.com/@oposup" target="_blank" rel="noopener" aria-label="TikTok">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
-</a>
+        <a href="#" aria-label="X (Twitter)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16M4 20L20 4"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
       </div>
     </div>
     <div>
@@ -1334,6 +1321,11 @@
 </footer>
 
 <script>
+  // Beta banner: amagar si l'usuari ja l'ha tancat
+  if (localStorage.getItem('betaClosed')) {
+    document.getElementById('betaBanner').style.display = 'none';
+  }
+
   function toggleMobileMenu() {
     const menu = document.getElementById('mobileMenu');
     menu.classList.toggle('open');
@@ -1357,22 +1349,22 @@
   // ── BLOG: crida a l'API de Hashnode amb fallback estàtic ──
   const BLOG_FALLBACK = [
     {
-      title: "Què és el TREBEP i per què sempre cau a l'examen?",
-      brief: "El Text Refós de l'Estatut Bàsic de l'Empleat Públic és una de les lleis més preguntades a qualsevol oposició. T'expliquem per què i els articles clau.",
-      url: "https://blog.oposup.com/qu-s-el-trebep-i-per-qu-sempre-cau-a-l-examen",
+      title: "Com preparar les oposicions a la Generalitat de Catalunya el 2026",
+      brief: "Guia pràctica per afrontar les 8.474 places convocades amb les millors estratègies d'estudi.",
+      url: "https://blog.oposup.com",
       publishedAt: "2026-05-20"
     },
     {
-      title: "Quants dies cal estudiar per aprovar unes oposicions a la Generalitat?",
-      brief: "La resposta depèn de molts factors, però hi ha una metodologia provada. Descobreix com planificar el teu estudi de manera realista i eficaç.",
-      url: "https://blog.oposup.com/quants-dies-cal-estudiar-per-aprovar-unes-oposicions-a-la-generalitat",
-      publishedAt: "2026-05-13"
+      title: "Tot sobre les oposicions de l'Ajuntament de Barcelona 2026",
+      brief: "530 places convocades per a l'administració municipal. Dates, places i consells per aprovar.",
+      url: "https://blog.oposup.com",
+      publishedAt: "2026-05-15"
     },
     {
-      title: "Onada de jubilacions: ara és el moment d'opositar",
-      brief: "Milers de places s'estan convocant a l'administració pública catalana com a conseqüència de l'onada de jubilacions. Una oportunitat històrica per estabilitzar-te.",
-      url: "https://blog.oposup.com/jubilacions-administracio-moment-opositar",
-      publishedAt: "2026-05-02"
+      title: "Diputació de Barcelona: 695 places i com preparar-les",
+      brief: "Anàlisi detallada de les oposicions de la DIBA i el seu PAMO 2026 amb els cossos més demanats.",
+      url: "https://blog.oposup.com",
+      publishedAt: "2026-05-10"
     }
   ];
 
@@ -1420,6 +1412,7 @@
       }
     `;
 
+    // Timeout de 3 segons — si l'API no respon, mostra el fallback
     const timeout = new Promise((_, reject) =>
       setTimeout(() => reject(new Error('timeout')), 3000)
     );
@@ -1443,6 +1436,7 @@
         renderPosts(BLOG_FALLBACK);
       }
     } catch (err) {
+      // API no disponible o timeout → fallback estàtic
       renderPosts(BLOG_FALLBACK);
     }
   }
